@@ -1,33 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import PublicPage from '../components/templates/PublicPage/PublicPage';
+import ClientPage from '../components/pages/client/clientPage';
+import dados from '../dados-desafio.json';
+import CardInfo from '../components/elements/cardInfo/cardInfo';
+import DataTable from '../components/modules/table/table';
+
+function findFourMostRecentDatesFromItems(itemList) {
+  const mostRecentDates = [];
+
+  for (const item of itemList) {
+    const dateStr = item.date;
+    const date = new Date(dateStr);
+
+    if (!isNaN(date) && (mostRecentDates.length < 4 || date > mostRecentDates[3])) {
+      mostRecentDates.push(date);
+      mostRecentDates.sort((a, b) => b - a);
+      if (mostRecentDates.length > 4) {
+        mostRecentDates.pop();
+      }
+    }
+  }
+
+  return mostRecentDates;
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const fourMostRecentDates = findFourMostRecentDatesFromItems(dados.items);
 
+  const itemsWithMostRecentDates = dados.items.filter((item) => {
+    const dateStr = item.date;
+    const date = new Date(dateStr);
+    return fourMostRecentDates.includes(date);
+  });
+
+  // Imprima os itens com as datas mais recentes
+  itemsWithMostRecentDates.map((item) => {
+    console.log("Data:", item.date);
+    console.log("Outra Propriedade:", item.paymentType);
+    console.log(item.status);
+  });
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <PublicPage>
+        <ClientPage />
+        <div style={{display: 'flex', gap:'20px'}}>
+          <CardInfo 
+            totalQuantity={dados.summary.totalQuantity} 
+            totalAmount={dados.summary.totalAmount} 
+            totalNetAmount={dados.summary.totalNetAmount} 
+            totalAverageAmount={dados.summary.totalAverageAmount}
+          />
+          <DataTable />
+        </div>
+      </PublicPage>
     </>
   )
 }

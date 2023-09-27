@@ -64,6 +64,8 @@ const HeaderStyled = styled.header`
         color:black;
       }
     }
+
+
   }
 
   .header-image {
@@ -72,6 +74,10 @@ const HeaderStyled = styled.header`
     align-items: center;
     &-logo {
       cursor: pointer;
+    }
+    .img-header{
+      width: 80px;
+      height: 30px;
     }
   }
 

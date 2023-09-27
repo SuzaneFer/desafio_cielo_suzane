@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const CardInfoStyle = styled.div`
   width: 30%;
-  border: 2px solid rgb(179, 179, 179);
+  border: 1px solid rgba(224, 224, 224, 1);
   border-radius: 10px;
   display: flex;
   flex-direction: column;

@@ -5,8 +5,6 @@ import dados from '../../../dados-desafio.json';
 const GraficoCanal = () => {
   const [chartData, setChartData] = useState([]);
 
-  console.log(chartData)
-
   useEffect(() => {
     const transactionCounts = dados.items.reduce((counts, transaction) => {
       const { channel } = transaction;

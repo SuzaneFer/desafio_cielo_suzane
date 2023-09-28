@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {DataGrid} from '@mui/x-data-grid';
-import dados from '../../../dados-desafio.json';
+import PropTypes from 'prop-types';
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 200 },
@@ -15,11 +15,11 @@ const columns = [
 
 ];
 
-const DataTable= () => {
+const DataTable= (data) => {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={dados.items}
+        rows={data.data}
         columns={columns}
         initialState={{
           pagination: {
@@ -32,5 +32,13 @@ const DataTable= () => {
     </div>
   );
 }
+
+DataTable.propTypes = {
+  data: PropTypes.object,
+};
+
+DataTable.defaultProps = {
+  data: {},
+};
 
 export default DataTable;

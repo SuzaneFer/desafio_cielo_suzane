@@ -5,8 +5,6 @@ import dados from '../../../dados-desafio.json';
 const GraficoCartao = () => {
   const [chartData, setChartData] = useState([]);
 
-  console.log(chartData)
-
   useEffect(() => {
     const transactionCounts = dados.items.reduce((counts, transaction) => {
       const { cardBrand } = transaction;

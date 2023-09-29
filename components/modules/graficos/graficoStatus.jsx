@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-google-charts';
-import dados from '../../../dados-desafio.json';
+import PropTypes from 'prop-types';
+import useDeviceSelector from '../../../hooks/useDeviceSelector';
 
-const GraficoStatus = () => {
+const getDados = (data) => {
+  const transactionCounts = data?.reduce((counts, transaction) => {
+    const { channel } = transaction;
+    counts[channel] = (counts[channel] || 0) + 1;
+    return counts;
+  }, {});
+  
+  const chartDataArray = [['Canal', 'Quantidade']];
+  
+  for (const [channel, count] of Object.entries(transactionCounts)) {
+    chartDataArray.push([channel, count]);
+  }
+
+  return chartDataArray;
+}
+
+const GraficoStatus = ({ data }) => {
   const [chartData, setChartData] = useState([]);
+  const isMobile = useDeviceSelector(true, false);
 
   useEffect(() => {
-    const transactionCounts = dados.items.reduce((counts, transaction) => {
-      const { status } = transaction;
-      counts[status] = (counts[status] || 0) + 1;
-      return counts;
-    }, {});
-
-    const chartData = [['Canal', 'Quantidade']];
-    for (const [status, count] of Object.entries(transactionCounts)) {
-      chartData.push([status, count]);
+    if (data) {
+      const dados = getDados(data);
+      setChartData(dados);
     }
-
-    setChartData(chartData);
-  }, [dados]);
+  }, [data]);
 
   const options = {
     chartArea: {
@@ -34,16 +44,24 @@ const GraficoStatus = () => {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
-      <span style={{textAlign: 'center'}}>Gráfico de status</span>
+      <span style={{textAlign: 'center', color: 'black'}}>Gráfico de status</span>
       <Chart
         chartType="PieChart"
         width={'100%'}
-        height={'400px'}
+        height={isMobile ? '200px': '400px'}
         data={chartData}
         options={options}
       />
     </div>
   );
+};
+
+GraficoStatus.propTypes = {
+  data: PropTypes.array,
+};
+  
+GraficoStatus.defaultProps = {
+  data: [],
 };
 
 export default GraficoStatus;

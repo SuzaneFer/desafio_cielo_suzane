@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { Drawer, Popover } from '@mui/material';
-import HeaderStyled, { MenuContentStyled } from './HeaderStyle.style';
+import HeaderStyled, { MenuContentStyled } from './headerStyle.style';
 import Device from '../../elements/device/device';
 import { DEVICE_TYPES } from '../../../utils/constants';
 
@@ -35,6 +35,7 @@ const Header = () => {
           <div className="header-navigation">
             <Device deviceType={DEVICE_TYPES.desktop}>
               <div className="header-navigation-divider" />
+              <p>teste aqui</p>
             </Device>
             {getNavBarMenu()}
           </div>

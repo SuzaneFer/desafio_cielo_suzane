@@ -1,10 +1,8 @@
-import {
-  Dispatch, SetStateAction, useEffect, useState,
-} from 'react';
+import { useEffect, useState} from 'react';
 import { DEVICE_TYPES, MIN_MOBILE_WIDTH_PX } from '../utils/constants';
 
 export default function useDeviceType() {
-  const [deviceType, setDeviceType]: [number | undefined, Dispatch<SetStateAction<number | undefined>>] = useState();
+  const [deviceType, setDeviceType] = useState(DEVICE_TYPES.desktop);
 
   useEffect(() => {
     const handleResize = () => {

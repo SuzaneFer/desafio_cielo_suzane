@@ -1,24 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-google-charts';
-import dados from '../../../dados-desafio.json';
+import PropTypes from 'prop-types';
+import useDeviceSelector from '../../../hooks/useDeviceSelector';
 
-const GraficoCanal = () => {
+
+const getDados = (data) => {
+  const transactionCounts = data?.reduce((counts, transaction) => {
+    const { channel } = transaction;
+    counts[channel] = (counts[channel] || 0) + 1;
+    return counts;
+  }, {});
+  
+  const chartDataArray = [['Canal', 'Quantidade']];
+  
+  for (const [channel, count] of Object.entries(transactionCounts)) {
+    chartDataArray.push([channel, count]);
+  }
+
+  return chartDataArray;
+}
+
+const GraficoCanal = ({ data }) => {
   const [chartData, setChartData] = useState([]);
+  const isMobile = useDeviceSelector(true, false);
 
   useEffect(() => {
-    const transactionCounts = dados.items.reduce((counts, transaction) => {
-      const { channel } = transaction;
-      counts[channel] = (counts[channel] || 0) + 1;
-      return counts;
-    }, {});
-
-    const chartData = [['Canal', 'Quantidade']];
-    for (const [channel, count] of Object.entries(transactionCounts)) {
-      chartData.push([channel, count]);
+    if (data) {
+      const dados = getDados(data);
+      setChartData(dados);
     }
-
-    setChartData(chartData);
-  }, [dados]);
+  }, [data]);
 
   const options = {
     chartArea: {
@@ -34,16 +45,24 @@ const GraficoCanal = () => {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
-      <span style={{textAlign: 'center'}}>Gráfico de canais</span>
+      <span style={{textAlign: 'center', color: 'black'}}>Gráfico de canais</span>
       <Chart
         chartType="PieChart"
         width={'100%'}
-        height={'400px'}
+        height={isMobile ? '200px': '400px'}
         data={chartData}
         options={options}
       />
     </div>
   );
+};
+
+GraficoCanal.propTypes = {
+  data: PropTypes.array,
+};
+  
+GraficoCanal.defaultProps = {
+  data: [],
 };
 
 export default GraficoCanal;

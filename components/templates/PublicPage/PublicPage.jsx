@@ -1,4 +1,4 @@
-import Header from "../../modules/header/Header";
+import Header from "../../modules/header/header";
 
 const PublicPage = ({ children }) => (
   <>

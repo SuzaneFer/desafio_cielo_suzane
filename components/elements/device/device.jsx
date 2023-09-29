@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-
 import { DEVICE_TYPES } from '../../../utils/constants';
 import useDeviceType from '../../../hooks/useDeviceType';
 

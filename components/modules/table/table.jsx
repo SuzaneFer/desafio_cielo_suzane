@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {DataGrid} from '@mui/x-data-grid';
 import PropTypes from 'prop-types';
+import useDeviceSelector from '../../../hooks/useDeviceSelector';
 
-const columns = [
+const columnsDesktop = [
   { field: 'id', headerName: 'Id', width: 200 },
   { field: 'paymentType', headerName: 'Payment Type', width: 160 },
   { field: 'channel', headerName: 'Channel', width: 160 },
@@ -12,22 +13,27 @@ const columns = [
     headerName: 'Raiz Cnpj',
     width: 90,
   },
+];
 
+const columnsMobile = [
+  { field: 'id', headerName: 'Id', width: 100 },
+  { field: 'paymentType', headerName: 'Payment Type', width: 100 },
+  { field: 'channel', headerName: 'Channel', width: 100 },
 ];
 
 const DataTable= (data) => {
+  const isMobile = useDeviceSelector(true, false);
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={data.data}
-        columns={columns}
+        columns={isMobile ? columnsMobile : columnsDesktop}
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 5 },
           },
         }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
       />
     </div>
   );

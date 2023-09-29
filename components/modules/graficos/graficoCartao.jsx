@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-google-charts';
-import dados from '../../../dados-desafio.json';
+import PropTypes from 'prop-types';
+import useDeviceSelector from '../../../hooks/useDeviceSelector';
 
-const GraficoCartao = () => {
+const getDados = (data) => {
+  const transactionCounts = data?.reduce((counts, transaction) => {
+    const { channel } = transaction;
+    counts[channel] = (counts[channel] || 0) + 1;
+    return counts;
+  }, {});
+  
+  const chartDataArray = [['Canal', 'Quantidade']];
+  
+  for (const [channel, count] of Object.entries(transactionCounts)) {
+    chartDataArray.push([channel, count]);
+  }
+
+  return chartDataArray;
+}
+
+const GraficoCartao = ({ data }) => {
   const [chartData, setChartData] = useState([]);
+  const isMobile = useDeviceSelector(true, false);
 
   useEffect(() => {
-    const transactionCounts = dados.items.reduce((counts, transaction) => {
-      const { cardBrand } = transaction;
-      counts[cardBrand] = (counts[cardBrand] || 0) + 1;
-      return counts;
-    }, {});
-
-    const chartData = [['Canal', 'Quantidade']];
-    for (const [cardBrand, count] of Object.entries(transactionCounts)) {
-      chartData.push([cardBrand, count]);
+    if (data) {
+      const dados = getDados(data);
+      setChartData(dados);
     }
-
-    setChartData(chartData);
-  }, [dados]);
+  }, [data]);
 
   const options = {
     chartArea: {
@@ -34,16 +44,24 @@ const GraficoCartao = () => {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
-      <span style={{textAlign: 'center'}}>Gráfico de cartões</span>
+      <span style={{textAlign: 'center', color: 'black'}}>Gráfico de cartões</span>
       <Chart
         chartType="PieChart"
         width={'100%'}
-        height={'400px'}
+        height={isMobile ? '200px': '400px'}
         data={chartData}
         options={options}
       />
     </div>
   );
+};
+
+GraficoCartao.propTypes = {
+  data: PropTypes.array,
+};
+  
+GraficoCartao.defaultProps = {
+  data: [],
 };
 
 export default GraficoCartao;

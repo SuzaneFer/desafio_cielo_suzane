@@ -4,7 +4,7 @@ Bem-vindo ao projeto de Suzane Ferreira Pinto! Este projeto tem como objetivo ex
 
 ## Instruções de Teste
 
-Para testar este projeto, siga os seguintes passos:
+Para testar este projeto, clone o projeto, utilize a branch de master e siga os seguintes passos:
 
 ### 1. Instalação
 

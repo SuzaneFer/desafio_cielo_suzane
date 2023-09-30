@@ -45,6 +45,8 @@ Em outro terminal, execute o seguinte comando:
 ```bash
 npm run cypress
 ```
-Isso abrirá a janela do Cypress. Clique no nome do arquivo de teste que você deseja executar e os testes serão executados no navegador. Utilize o navegador electron.
+Isso abrirá a janela do Cypress. 
 
-Lembre-se de que para executar o Cypress, você precisa clicar no nome do arquivo de teste na janela do Cypress que se abrirá.
+Clique em -> E2E Testing
+Utilize o navegador electron e clique em start.
+Clique no nome do arquivo de teste que você deseja executar e os testes serão executados no navegador.

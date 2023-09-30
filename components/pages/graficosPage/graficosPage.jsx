@@ -10,7 +10,7 @@ const GraficosPage = () => {
   console.log('antes', dataTable)
 
   return (  
-    <GraficosPageStyle>
+    <GraficosPageStyle data-cy='graficos-page'>
       <GraficoCanal data={dataTable} />
       <GraficoStatus data={dataTable} />
       <GraficoCartao data={dataTable} />

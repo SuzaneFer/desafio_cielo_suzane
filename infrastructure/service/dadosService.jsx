@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { createContext, useContext, useEffect, useState } from 'react';
+import getData from '../../helpers/getData';
 
 const DataContext = createContext();
 
@@ -13,13 +13,17 @@ export function DataProvider({ children }) {
   const dataTable = data.items;
   
   useEffect(() => {
-    axios.get('http://localhost:3000/buscar-dados')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Erro ao buscar dados:', error);
-      });
+    const fetchData = async () => {
+      try {
+        const newData = await getData();
+        console.log(newData);
+        setData(newData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (

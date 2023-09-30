@@ -5,6 +5,7 @@ import CardInfo from '../../elements/cardInfo/cardInfo'
 import { useData } from '../../../infrastructure/service/dadosService';
 import TabsMenu from '../../modules/tabsMenu/tabsMenu';
 import GraficosPage from '../graficosPage/graficosPage';
+import CardModal from '../../elements/modal/modal';
 
 const tabs = [
   { key: 0, label: 'Início' },
@@ -53,6 +54,7 @@ const ClientPage = () => {
         {renderComponent()}
         </section>
       </div>
+      <CardModal></CardModal>
     </ClientPageStyle>
   );
 };

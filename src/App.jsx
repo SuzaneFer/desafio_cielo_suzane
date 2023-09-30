@@ -1,6 +1,5 @@
-import PublicPage from '../components/templates/publicPage/publicPage';
+import PublicPage from '../components/templates/PublicPage/publicPage';
 import ClientPage from '../components/pages/client/clientPage';
-import GraficosPage from '../components/pages/graficosPage/graficosPage';
 
 function App() {
   return (
@@ -10,4 +9,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

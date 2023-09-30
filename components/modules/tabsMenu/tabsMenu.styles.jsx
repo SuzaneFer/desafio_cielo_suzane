@@ -54,6 +54,7 @@ const TabsMenuStyle = styled.div`
 
   @media only screen and (max-width: ${MIN_MOBILE_WIDTH_PX}px) {
     margin: auto;
+    margin-bottom: 12px;
     width: fit-content;
     grid-gap: 10px;
 

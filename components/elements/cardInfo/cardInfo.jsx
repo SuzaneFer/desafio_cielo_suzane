@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import CardInfoStyle from './cardInfo.style';
 
 const CardInfo = (data) => (
-  <CardInfoStyle>
-    <span>Informações cliente</span>
+  <CardInfoStyle data-cy='card-info'>
+    <span><strong>Informações cliente</strong></span>
     <span>Quantidade total: {data.data.totalQuantity}</span>
     <span>Valor total: {data.data.totalAmount}</span>
     <span>Valor líquido total: {data.data.totalNetAmount}</span>

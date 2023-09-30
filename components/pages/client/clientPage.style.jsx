@@ -51,6 +51,9 @@ const ClientPageStyle = styled.div`
       flex-direction: column;
       margin: 100px auto auto;
     }
+    .card-info{
+      flex-direction: column;
+    }
     img{
       width: 380px;
     }

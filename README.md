@@ -48,5 +48,7 @@ npm run cypress
 Isso abrirá a janela do Cypress. 
 
 Clique em -> E2E Testing
+
 Utilize o navegador electron e clique em start.
+
 Clique no nome do arquivo de teste que você deseja executar e os testes serão executados no navegador.

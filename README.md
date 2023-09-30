@@ -1,10 +1,10 @@
-# Projeto de Suzane Ferreira Pinto
+# Desafio Cielo
 
-Bem-vindo ao projeto de Suzane Ferreira Pinto! Este projeto tem como objetivo exibir transações e gráficos.
+Bem-vindo ao meu projeto! 
 
 ## Instruções de Teste
 
-Para testar este projeto, clone o projeto, utilize a branch de **main** e siga os seguintes passos:
+Para testar este projeto, clone o projeto, utilize a branch de **main**, utilize a versão **v18.17.1** do node e siga os seguintes passos:
 
 ### 1. Instalação
 
@@ -31,7 +31,7 @@ http://localhost:5173/
 O projeto inclui testes unitários usando o framework Jest. Para executar os testes, utilize o seguinte comando:
 
 ```bash
-npm run jest
+npm run test
 ```
 Isso iniciará a execução dos testes e fornecerá os resultados no terminal.
 
@@ -45,6 +45,10 @@ Em outro terminal, execute o seguinte comando:
 ```bash
 npm run cypress
 ```
-Isso abrirá a janela do Cypress. Clique no nome do arquivo de teste que você deseja executar e os testes serão executados no navegador. Utilize o navegador electron.
+Isso abrirá a janela do Cypress. 
 
-Lembre-se de que para executar o Cypress, você precisa clicar no nome do arquivo de teste na janela do Cypress que se abrirá.
+Clique em -> E2E Testing
+
+Utilize o navegador electron e clique em start.
+
+Clique no nome do arquivo de teste que você deseja executar e os testes serão executados no navegador.

@@ -5,15 +5,15 @@ import useDeviceSelector from '../../../hooks/useDeviceSelector';
 
 const getDados = (data) => {
   const transactionCounts = data?.reduce((counts, transaction) => {
-    const { channel } = transaction;
-    counts[channel] = (counts[channel] || 0) + 1;
+    const { cardBrand } = transaction;
+    counts[cardBrand] = (counts[cardBrand] || 0) + 1;
     return counts;
   }, {});
   
   const chartDataArray = [['Canal', 'Quantidade']];
   
-  for (const [channel, count] of Object.entries(transactionCounts)) {
-    chartDataArray.push([channel, count]);
+  for (const [cardBrand, count] of Object.entries(transactionCounts)) {
+    chartDataArray.push([cardBrand, count]);
   }
 
   return chartDataArray;

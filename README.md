@@ -1,6 +1,6 @@
-# Projeto de Suzane Ferreira Pinto
+# Desafio Cielo
 
-Bem-vindo ao projeto de Suzane Ferreira Pinto! Este projeto tem como objetivo exibir transações e gráficos.
+Bem-vindo ao meu projeto! 
 
 ## Instruções de Teste
 

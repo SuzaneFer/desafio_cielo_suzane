@@ -43,8 +43,9 @@ const GraficoCartao = ({ data }) => {
   };
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
-      <span style={{textAlign: 'center', color: 'black'}}>Gráfico de cartões</span>
+    <div className='content-grafico'>
+      <span className='title-grafico'>Gráfico de cartões</span>
+      <div className="tab-button-line" />
       <Chart
         chartType="PieChart"
         width={'100%'}

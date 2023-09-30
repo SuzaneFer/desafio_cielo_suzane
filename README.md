@@ -4,7 +4,7 @@ Bem-vindo ao projeto de Suzane Ferreira Pinto! Este projeto tem como objetivo ex
 
 ## Instruções de Teste
 
-Para testar este projeto, clone o projeto, utilize a branch de **main** e siga os seguintes passos:
+Para testar este projeto, clone o projeto, utilize a branch de **main**, utilize a versão **v18.17.1** do node e siga os seguintes passos:
 
 ### 1. Instalação
 

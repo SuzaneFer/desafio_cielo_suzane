@@ -31,7 +31,7 @@ http://localhost:5173/
 O projeto inclui testes unitários usando o framework Jest. Para executar os testes, utilize o seguinte comando:
 
 ```bash
-npm run jest
+npm run test
 ```
 Isso iniciará a execução dos testes e fornecerá os resultados no terminal.
 
